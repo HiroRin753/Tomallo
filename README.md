@@ -41,7 +41,7 @@
 - has_many :reserves
 - has_many :payments
 
-## restaurants テーブル
+## houses テーブル
 | Column           | Type      | Options     |
 | ---------------  | --------- | ----------- |
 | name             | string    | null: false |
