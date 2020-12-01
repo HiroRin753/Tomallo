@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: 'houses#index'
-  resources :houses 
+  resources :houses, only: [:index,:new]
   resources :users, only: :show
 
   get '/auth/:provider/callback', to: 'sessions#create' #ログイン認証
