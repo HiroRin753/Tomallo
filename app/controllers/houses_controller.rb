@@ -4,6 +4,11 @@ class HousesController < ApplicationController
   end
 
   def new 
-    # @house = House.new
+    @house = House.new
+  end
+  
+private
+  def house_params
+    params.require(:house).permit(:image).merge(user_id: current_user.id)
   end
 end
