@@ -1,6 +1,11 @@
-<div class= 'nav'>
-   <%= link_to 'Tomallo', "/", class: "title" %>
+<div class= 'user-top'>
+  <p><%= link_to 'Tomallo', "/", class: "title" %></p>
+  <p class= "user-name">
+   <%= "#{current_user.nickname}さん"%>
+  </p>
 </div>
 
-<div class= 'room'>
-   <>
+<div class= 'regi'>
+  <%= link_to'お部屋を掲載する', new_house_path, class: "regibtn"%>
+</div>
+    
