@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
   root to: 'houses#index'
   resources :houses 
-  resources :users, [:show]
+  resources :users, only:[:show]
 
   get '/auth/:provider/callback', to: 'sessions#create' #ログイン認証
   get '/logout', to: 'sessions#destroy' #ログアウト用
