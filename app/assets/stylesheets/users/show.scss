@@ -1,0 +1,30 @@
+.user-top {
+  background-image: image-url('top.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: flex;
+}
+.title{
+text-decoration: none;
+color:#fff;
+font-size: 35px;
+}
+
+.user-name{
+  text-decoration: none;
+  color:#fff;
+  font-size: 35px;
+}
+
+.regi{
+ margin-top: 10px;
+}
+
+.regibtn{
+  text-decoration: none;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  padding: 5px;
+}
