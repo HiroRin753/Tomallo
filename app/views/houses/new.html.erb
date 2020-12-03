@@ -79,7 +79,7 @@
           <label class="weight-bold-text">都道府県</label>
           <span class="indispensable">必須</span>
         </div>
-        <%# <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %> %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
@@ -114,12 +114,12 @@
           カテゴリー
           <span class="indispensable">必須</span>
         </div>
-        <%# <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %> %>
+        <%= f.collection_select(:category_id, HouseCategory.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
           建物タイプ
           <span class="indispensable">必須</span>
         </div>
-        <%# <%= f.collection_select(:condition_id, Condition.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %> %>
+         <%= f.collection_select(:condition_id, RoomType.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
       </div>
     </div>
     <%# /商品の詳細 %>
