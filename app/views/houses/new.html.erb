@@ -15,7 +15,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :images, name: 'house[images][]', id:"house-image" %>
+        <%= f.file_field :images, name: 'house_address[images][]', id:"house-image" %>
       </div>
     </div>
     <%# /出品画像 %>
@@ -26,7 +26,7 @@
         タイトル
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
       <div class="items-explain">
         <div class="weight-bold-text">
           概要
@@ -107,12 +107,12 @@
           カテゴリー
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:category_id, HouseCategory.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:house_category_id, HouseCategory.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
           建物タイプ
           <span class="indispensable">必須</span>
         </div>
-         <%= f.collection_select(:condition_id, RoomType.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+         <%= f.collection_select(:room_type_id, RoomType.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
       </div>
     </div>
     <%# /商品の詳細 %>

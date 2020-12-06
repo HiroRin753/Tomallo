@@ -2,7 +2,7 @@ class HouseAddress
   include ActiveModel::Model
   attr_accessor :title, :description, :location, :checkin, :checkout, :house_category_id, :room_type_id, :price, :postal_code, :prefecture_id, :city, :house_number, :building_name, :images, :user_id
 
- 
+  
   with_options presence: true do
     validates :user_id
     validates :checkin
@@ -25,7 +25,7 @@ class HouseAddress
     end
   end
     def save
-      house = House.create(title: title, description: description, location: location, images: images, checkin: checkin, checkout:checkout, house_category_id: house_category_id, room_type_id: room_type_id,  price: price, user_id: user.id)
-      Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building_name: building_name, house_id: house_id, house_id: house_id)
+      house = House.create(title: title, description: description, location: location, images: images, checkin: checkin, checkout:checkout, house_category_id: house_category_id, room_type_id: room_type_id,  price: price, user_id: user_id)
+      Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building_name: building_name, house_id: house.id)
     end
 end
