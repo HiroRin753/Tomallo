@@ -85,7 +85,30 @@
 <%# /宿のタイプから探す %>
 
 <%# 宿一覧  %>
-
+<div class='item-contents'>
+    <%= link_to '新着物件情報', new_house_path, class: "subtitle" %>
+    <ul class='item-lists'>
+      <% @houses.each do |house| %>
+        <li class='list'>
+          <%= link_to house_path(house.id)  do %>
+          <div class='item-img-content'>
+            <%= image_tag house.images[0], class: "item-img"  %>
+          </div>
+          <div class='item-info'>
+            <h3 class='item-name'>
+              <%= house.title%>
+            </h3>
+            <div class='item-price'>
+              <span><%= house.price %>円/一泊<br>(税込み)</span>
+              <div class='star-btn'>
+                <%# <%= image_tag "star.png", class:"star-icon" %> 
+                <%# <span class='star-count'>0</span> %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
 <%# /宿一覧  %>
 
 
