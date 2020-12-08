@@ -30,12 +30,19 @@
       <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
     </div>
   </div>
-   <form class='search-form' action='#'>
-    <input class='input-box' placeholder='どちらにご旅行ですか？  (例)港区'>
-    <button class="search-button">
-    <i>検索</i>
-    </button>
-   </form>
+  
+  <%# <div class='search-form'>
+    <%= form_with url: houses_search_path, method: :get, local: true do |f| %>
+    <%# <%= f.text_field :エリアで検索, class: 'input-box' %> 
+    <%# <%= f.submit :検索 %> 
+    <%# <%end%> 
+  <%# </div>  %>
+<%= search_form_for @q do |f|%>
+ <div class = 'search-form'>
+  <%= f.search_field :title_cont, class:'input-box', placeholder: 'キーワードから探す'%>
+  <%= f.submit :検索, class:'search-button' %>
+ </div>
+<% end %>
 </div>
 
 <%# エリアから探す %>
@@ -85,30 +92,32 @@
 <%# /宿のタイプから探す %>
 
 <%# 宿一覧  %>
-<div class='item-contents'>
-    <%= link_to '新着物件情報', new_house_path, class: "subtitle" %>
-    <ul class='item-lists'>
+<div class='house-contents'>
+  <%= link_to '新着物件情報', new_house_path, class: "subtitle" %>
+    <ul class='house-lists'>
       <% @houses.each do |house| %>
         <li class='list'>
           <%= link_to house_path(house.id)  do %>
-          <div class='item-img-content'>
-            <%= image_tag house.images[0], class: "item-img"  %>
+          <div class='house-img-content'>
+            <%= image_tag house.images[0], class: "house-img"  %>
           </div>
-          <div class='item-info'>
-            <h3 class='item-name'>
+          <div class='house-info'>
+            <h3 class='house-title'>
               <%= house.title%>
             </h3>
-            <div class='item-price'>
+            <div class='house-price'>
               <span><%= house.price %>円/一泊<br>(税込み)</span>
-              <div class='star-btn'>
+              <%# <div class='star-btn'> %>
                 <%# <%= image_tag "star.png", class:"star-icon" %> 
                 <%# <span class='star-count'>0</span> %>
-              </div>
+              <%# </div> %>
             </div>
           </div>
           <% end %>
         </li>
       <% end %>
+    </ul>
+</div>
 <%# /宿一覧  %>
 
 

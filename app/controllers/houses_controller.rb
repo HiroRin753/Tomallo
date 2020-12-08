@@ -1,7 +1,8 @@
 class HousesController < ApplicationController
 
   def index
-    @houses = House.all.order("created_at DESC")
+    @q = House.ransack(params[:q])
+    @houses = @q.result(distinct: true)
   end
 
   def new 
@@ -15,6 +16,18 @@ class HousesController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def show
+    @house = House.find(params[:id])
+  end
+
+  def search
+    if params[:city].present?
+      @houses_search = House.where('name LIKE ?', "%#{params[:city]}%")
+    else
+      @houses_search = House.none
     end
   end
 
