@@ -31,18 +31,12 @@
     </div>
   </div>
   
-  <%# <div class='search-form'>
-    <%= form_with url: houses_search_path, method: :get, local: true do |f| %>
-    <%# <%= f.text_field :エリアで検索, class: 'input-box' %> 
-    <%# <%= f.submit :検索 %> 
-    <%# <%end%> 
-  <%# </div>  %>
-<%= search_form_for @q do |f|%>
- <div class = 'search-form'>
-  <%= f.search_field :title_cont, class:'input-box', placeholder: 'キーワードから探す'%>
-  <%= f.submit :検索, class:'search-button' %>
- </div>
-<% end %>
+  <div class='search-form'>
+   <%= search_form_for @q do |f| %>
+     <%= f.search_field :city_cont, class: 'input-box', placeholder: 'エリアで検索' %>
+     <%= f.submit :'検索', class: 'search-button'%>
+   <% end %>
+  </div>
 </div>
 
 <%# エリアから探す %>

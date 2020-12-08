@@ -1,8 +1,8 @@
 <div class = house-rent-contents>
  <div class="items-sell-main">
     <h2 class="items-sell-title">お部屋の情報を入力</h2>
-    <%= form_with model: @house_address, url: houses_path, local: true do |f| %>
-    <%= render 'shared/error_messages', model: @house_address %>
+    <%= form_with model: @house, local: true do |f| %>
+     <%= render 'shared/error_messages', model: f.object %>
 
     <%# 出品画像 %>
     <div class="img-upload">
@@ -15,7 +15,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :images, name: 'house_address[images][]', id:"house-image" %>
+        <%= f.file_field :images, name: 'house[images][]', id:"house-image" %>
       </div>
     </div>
     <%# /出品画像 %>
