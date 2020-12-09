@@ -198,7 +198,6 @@
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
-  text-decoration: none;
 }
 
 .house-lists>.list {
@@ -219,12 +218,13 @@
 .house-info {
   background-color: #FFF;
   color: black;
+  width: 33vh;
   padding: 1vw;
+  border: solid 1px;;
 }
 
 .house-title {
   font-size: 2.5vh;
-  text-decoration: none;
 }
 
 .house-price {
