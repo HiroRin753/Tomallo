@@ -3,21 +3,23 @@
 }
 
 .top{
-  background-image: image-url('top.jpg');
-  background-size: 100%;
+  background-image: image-url('top-image.jpg');
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: bottom;
+  height: 50vh;
+  padding-top: 30px;
 }
 
 .top-page-header {
   width: 100%;
-  padding: 2vh 15vw;
+  padding: 1vh 15vw;
   display: flex;
 }
 
 .title {
   text-decoration: none;
-  color:#fff;
+  color: black;
   font-size: 35px;
 }
 
@@ -38,28 +40,28 @@
 
 .user-nickname{
   text-decoration: none;
-  color: #fff;
+  color:black;
   margin-right: 20px;
 }
 
 .logout {
   text-decoration: none;
-  color: #fff;
+  color: black;
 }
 
 .login {
   text-decoration: none;
   margin-right: 3vw;
-  color: #fff;
+  color:black;
 }
 
 .sign-up {
   text-decoration: none;
-  color: #fff;
+  color:black;
 }
 
 .title-contents{
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -123,7 +125,8 @@
 }
 
 .search-title{
- font-size: 2.2rem;
+ font-size: 2rem;
+
 }
 
 .area-search-list{

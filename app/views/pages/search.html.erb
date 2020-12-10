@@ -1,0 +1,28 @@
+<%= render "shared/header" %>
+
+<div class='house-contents'>
+  <%# <%= '新着物件情報', new_house_path, class: "subtitle" %> 
+    <ul class='house-lists'>
+      <% @search.each do |house| %>
+        <li class='list'>
+          <%= link_to house_path(house.id)  do %>
+          <div class='house-img-content'>
+            <%= image_tag house.images[0], class: "house-img"  %>
+          </div>
+          <div class='house-info'>
+            <h3 class='house-title'>
+              <%= house.title%>
+            </h3>
+            <div class='house-price'>
+              <span><%= house.price %>円/一泊(税込み)</span>
+              <%# <div class='star-btn'> %>
+                <%# <%= image_tag "star.png", class:"star-icon" %> 
+                <%# <span class='star-count'>0</span> %>
+              <%# </div> %>
+            </div>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+</div>

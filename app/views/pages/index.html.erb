@@ -1,20 +1,6 @@
-<div class= top>
- <header class= "top-page-header">
-  <div class= 'nav'>
-   <%= link_to 'Tomallo', "/", class: "title" %>
-   <ul class='lists-right'>
-      <% if user_signed_in?  %> 
-
-       <li><%= link_to 'マイページ', user_path(current_user), class: "user-nickname" %></li>   
-       <li><%=link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-      <% else   %>
-       <li><%= link_to 'ログイン', new_user_session_path, class: "login"%></li>
-       <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li> 
-      <% end %>  
-   </ul>
-  </div>
- </header>
+<%= render "shared/header" %>
  
+<div class= top>
   <div class='title-contents'>
     <p class='service-title'>
       掲載件数NO.1
@@ -31,14 +17,15 @@
     </div>
   </div>
   
-  <%# <div class='search-form'>
-   <%# <%= search_form_for @q do |f|  %>
-     <%# <%= f.search_field :city_cont, class: 'input-box', placeholder: 'エリアで検索  (例)港区、横浜市緑区' %> %>
-     <%# <%= f.submit :'検索', class: 'search-button'%> 
-   <%# <% end %> 
-  <%# </div> %> 
-</div>
+   <div class='search-form'>
+    <%= form_tag pages_search_path, method: :get do %> 
+     <%= text_field_tag :search, params[:search], class: 'input-box', placeholder: 'エリアから探す (例)港区、横浜市緑区' %>
+     <%= submit_tag '検索' , class: 'search-button' %>
+    <% end %>
+   </div> 
 
+</div>
+ 
 <%# エリアから探す %>
 <div class= 'search-head' >
   <h2 class='search-title'>エリアから探す</h2>

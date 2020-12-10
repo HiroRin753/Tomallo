@@ -30,5 +30,10 @@ class House < ApplicationRecord
       validates :house_number
     end
   end
+
+  def self.search(search)
+    return House.all unless search
+     House.where(['city LIKE?', "%#{search}%"])
+    end
 end
 

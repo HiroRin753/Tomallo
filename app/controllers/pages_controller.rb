@@ -4,7 +4,8 @@ class PagesController < ApplicationController
    @houses = House.order("created_at DESC").limit(8)
   end
 
-  def serach
+  def search
+    @search = House.search(params[:search])
   end
 
 
