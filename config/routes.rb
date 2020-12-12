@@ -4,9 +4,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: 'pages#index'
-  resources :houses 
+  resources :pages, only: [:index, :search, :prefecture]
+  resources :houses, only: [:index, :new, :create, :show]
   resources :users, only:[:show]
 
+  get '/houses/prefecture/:id', to: "pages#prefecture"
   get 'pages/search'
   get '/auth/:provider/callback', to: 'sessions#create' #ログイン認証
   get '/logout', to: 'sessions#destroy' #ログアウト用

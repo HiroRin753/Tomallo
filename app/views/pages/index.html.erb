@@ -18,59 +18,16 @@
   </div>
   
    <div class='search-form'>
-    <%= form_tag pages_search_path, method: :get do %> 
+    <%= form_with url:pages_search_path, method: :get, local: true do  %> 
      <%= text_field_tag :search, params[:search], class: 'input-box', placeholder: 'エリアから探す (例)港区、横浜市緑区' %>
      <%= submit_tag '検索' , class: 'search-button' %>
-    <% end %>
+    <% end %> 
    </div> 
-
 </div>
  
-<%# エリアから探す %>
-<div class= 'search-head' >
-  <h2 class='search-title'>エリアから探す</h2>
-</div>
-<ul class='area-search-list'>
-  <li class='area-name'>東京</li>
-  <li class='area-name'>神奈川</li>
-  <li class='area-name'>埼玉</li>
-  <li class='area-name'>千葉</li>
-</ul>
-<%# /エリアから探す %>
-
-<%# 宿のタイプから探す %>
-<div class= 'search-head' >
-  <h2 class='search-title'>宿のタイプから探す</h2>
-</div>
-<div class= 'type-list'>
-<p class='house-type'>戸建て</p>
-  <ul class='type-search-head'>
-   <li class='type-detail'>一軒家</li>
-   <li class='type-detail'>タウンハウス（町家・長屋）</li>
-   <li class='type-detail'>ペンション</li>
-   <li class='type-detail'>ログハウス</li>
-   <li class='type-detail'>ドームハウス</li>
-   <li class='type-detail'>コテージ</li>
-   <li class='type-detail'>バンガロー</li>
-   <li class='type-detail'>古民家</li>
-  </ul>
-  <p class='house-type'>マンション・アパート</p>
-  <ul class='type-search-head'>
-   <li class='type-detail'>マンション&アパート</li>
-   <li class='type-detail'>コンドミニアム</li>
-   <li class='type-detail'>サービスアパートメント</li>
-   <li class='type-detail'>ロフト</li>
-  </ul>
-  <p class='house-type'>ホテル</p>
-  <ul class='type-search-head'>
-   <li class='type-detail'>デザイナーズホテル</li>
-   <li class='type-detail'>ロッジ</li>
-   <li class='type-detail'>ゲストハウス</li>
-   <li class='type-detail'>アパートホテル</li>
-   <li class='type-detail'>リゾートホテル・別荘</li>
-  </ul>
-</div>
-<%# /宿のタイプから探す %>
+<%# エリア・宿タイプから探す %>
+<%= render "shared/prefecture" %>
+<%# エリア宿タイプから探す %>
 
 <%# 宿一覧  %>
 <div class='house-contents'>
@@ -86,13 +43,12 @@
             <h3 class='house-title'>
               <%= house.title%>
             </h3>
-            <div class='house-price'>
-              <span><%= house.price %>円/一泊(税込み)</span>
+              <span class = 'house-address'><%= house.prefecture.name %><%= house.city %></span>
+              <span class='house-price'><%= house.price %>円/一泊(税込み)</span>
               <%# <div class='star-btn'> %>
                 <%# <%= image_tag "star.png", class:"star-icon" %> 
                 <%# <span class='star-count'>0</span> %>
               <%# </div> %>
-            </div>
           </div>
           <% end %>
         </li>

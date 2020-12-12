@@ -1,13 +1,12 @@
 class House < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-
   belongs_to_active_hash :house_category
   belongs_to_active_hash :room_type
   belongs_to_active_hash :prefecture
+
   has_many_attached :images
   belongs_to :user
   has_many :comments
-  has_one :address
   
   with_options presence: true do
     validates :user_id
@@ -34,6 +33,7 @@ class House < ApplicationRecord
   def self.search(search)
     return House.all unless search
      House.where(['city LIKE?', "%#{search}%"])
-    end
+  end
+  
 end
 

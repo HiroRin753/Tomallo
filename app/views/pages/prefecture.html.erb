@@ -1,11 +1,17 @@
 <%= render "shared/header" %>
 
 <div class='house-contents'>
-    <%# <div class = "subtitle"> 
-        <%= @house.city %>
-    <%# </div> %>
+   <div class= 'subtitle'>
+   <%= @prefecture.prefecture.name %>の物件一覧
+   </div>
+   <div class='search-form'>
+    <%= form_with url:pages_search_path, method: :get, local: true do  %> 
+     <%= text_field_tag :search, params[:search], class: 'input-box', placeholder: 'エリアから探す (例)港区、横浜市緑区' %>
+     <%= submit_tag '検索' , class: 'search-button' %>
+    <% end %> 
+   </div> 
     <ul class='house-lists'>
-      <% @search.each do |house| %>
+      <% @prefectures.each do |house| %>
         <li class='list'>
           <%= link_to house_path(house.id)  do %>
           <div class='house-img-content'>

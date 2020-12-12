@@ -6,7 +6,7 @@
 }
 
 .items-sell-main {
-  background-color:lightblue;
+  background-color: rgb(162, 229, 238);
   width: 70vw;
   min-width: 450px;
   padding: 10vh 15vw;
@@ -70,6 +70,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 2vh 0;
+
 }
 
 .click-upload {
@@ -80,6 +81,9 @@
 .click-upload>p {
   margin-bottom: 15px;
 }
+
+
+
 
 /* /出品画像 */
 
