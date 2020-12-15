@@ -76,5 +76,6 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 gem 'dotenv-rails'
 gem 'ransack'
-gem 'haml-rails', '~> 2.0'
-
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'jquery-rails'
+gem 'simple_calendar', '~> 2.0'

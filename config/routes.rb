@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :reservationcs
+  get 'events/index'
+  get 'events/show'
+  get 'events/new'
+  get 'events/edit'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'

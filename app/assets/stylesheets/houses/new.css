@@ -3,10 +3,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100vw;
+  background-color: #f8f8f8;
+  padding: 5vh;
 }
 
 .items-sell-main {
-  background-color: rgb(162, 229, 238);
+  background-color: #FFF;
   width: 70vw;
   min-width: 450px;
   padding: 10vh 15vw;

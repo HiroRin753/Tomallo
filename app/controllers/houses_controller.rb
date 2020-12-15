@@ -1,9 +1,6 @@
 class HousesController < ApplicationController
 
   def index
-    # @q = House.search(params[:q])
-    # @area = @q.result
-    @results = House.where('prefecture_id IN?', params[:prefecture_id])
   end
 
   def new 

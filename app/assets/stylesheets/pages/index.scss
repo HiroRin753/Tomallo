@@ -2,13 +2,25 @@
   box-sizing: border-box;
 }
 
+.body{
+  height: 100%;
+  margin: 0;
+  padding: 0px;
+  position: relative;
+}
+
+.wrapper{
+  position: relative;
+}
+
 .top{
   background-image: image-url('top-image.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
   height: 50vh;
-  padding-top: 30px;
+  width: 100%;
+  padding-top: 20px;
 }
 
 .top-page-header {
@@ -99,9 +111,9 @@
   display: flex;
   justify-content: center ;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 10vh;
-  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 .input-box{
@@ -149,27 +161,7 @@
  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16);
 }
 
-.type-list{
-  // width: 100%;
-}
 
-.house-type{
-  font-size: 20px;
-  margin-left: 20px;
-}
-
-.type-search-head{
-  display: flex;
-  list-style: none;
-}
-
-.type-detail{
-  color:darkgrey;
-  border: solid 1px #e1e1e1;
-  margin-left: 10px;
-  padding: 3px;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16);
-}
 
 // 宿一覧
 .house-contents {

@@ -1,61 +1,64 @@
-<%= render "shared/header" %>
- 
-<div class= top>
-  <div class='title-contents'>
-    <p class='service-title'>
-      掲載件数NO.1
-    </p>
-    <p class='catch-copy'>
-      お宿探しは
-    </p>
-    <p class='catch-copy'>
-    Tomalloにお任せ！
-    </p>
-    <div class='store-btn'>
-      <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
-    </div>
-  </div>
-  
-   <div class='search-form'>
-    <%= form_with url:pages_search_path, method: :get, local: true do  %> 
-     <%= text_field_tag :search, params[:search], class: 'input-box', placeholder: 'エリアから探す (例)港区、横浜市緑区' %>
-     <%= submit_tag '検索' , class: 'search-button' %>
-    <% end %> 
-   </div> 
-</div>
- 
-<%# エリア・宿タイプから探す %>
-<%= render "shared/prefecture" %>
-<%# エリア宿タイプから探す %>
 
-<%# 宿一覧  %>
-<div class='house-contents'>
-  <%= link_to '新着物件情報', new_house_path, class: "subtitle" %>
-    <ul class='house-lists'>
-      <% @houses.each do |house| %>
-        <li class='list'>
-          <%= link_to house_path(house.id)  do %>
-          <div class='house-img-content'>
-            <%= image_tag house.images[0], class: "house-img"  %>
-          </div>
-          <div class='house-info'>
-            <h3 class='house-title'>
-              <%= house.title%>
-            </h3>
-              <span class = 'house-address'><%= house.prefecture.name %><%= house.city %></span>
-              <span class='house-price'><%= house.price %>円/一泊(税込み)</span>
-              <%# <div class='star-btn'> %>
-                <%# <%= image_tag "star.png", class:"star-icon" %> 
-                <%# <span class='star-count'>0</span> %>
-              <%# </div> %>
-          </div>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+  <%= render "shared/header" %>
+<div class = 'wrapper'> 
+  <div class= top>
+    <div class='title-contents'>
+      <p class='service-title'>
+        掲載件数NO.1
+      </p>
+      <p class='catch-copy'>
+        お宿探しは
+      </p>
+      <p class='catch-copy'>
+      Tomalloにお任せ！
+      </p>
+      <div class='store-btn'>
+        <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
+        <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+      </div>
+    </div>
+    
+    <div class='search-form'>
+      <%= form_with url:pages_search_path, method: :get, local: true do  %> 
+      <%= text_field_tag :search, params[:search], class: 'input-box', placeholder: 'エリアから探す (例)港区、横浜市緑区' %>
+      <%= submit_tag '検索' , class: 'search-button' %>
+      <% end %> 
+    </div> 
+  </div>
+ 
+    <%# エリア・宿タイプから探す %>
+    <%= render "shared/prefecture" %>
+  <%# エリア宿タイプから探す %>
+
+  <%# 宿一覧  %>
+  <div class='house-contents'>
+    <%= link_to '新着物件情報', new_house_path, class: "subtitle" %>
+      <ul class='house-lists'>
+        <% @houses.each do |house| %>
+          <li class='list'>
+            <%= link_to house_path(house.id)  do %>
+            <div class='house-img-content'>
+              <%= image_tag house.images[0], class: "house-img"  %>
+            </div>
+            <div class='house-info'>
+              <h3 class='house-title'>
+                <%= house.title%>
+              </h3>
+                <span class = 'house-address'><%= house.prefecture.name %><%= house.city %></span>
+                <span class='house-price'><%= house.price %>円/一泊(税込み)</span>
+                <%# <div class='star-btn'> %>
+                  <%# <%= image_tag "star.png", class:"star-icon" %> 
+                  <%# <span class='star-count'>0</span> %>
+                <%# </div> %>
+            </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+  <%# /宿一覧  %>
 </div>
-<%# /宿一覧  %>
+  
 
 
 

@@ -1,0 +1,58 @@
+<%= render "shared/header" %>
+
+<%# 宿の概要 %>
+<div class="item-show">
+  <div class="item-box">
+    <div class='item-img-content'>
+      <%= image_tag @house.images[0], class:"item-box-img" %>
+    </div>
+     <h2 class="name">
+      <%= @house.title%>
+    </h2>
+    <div class="item-price-box">
+      <span class="item-price">
+        <%= @house.price %> 円/泊（税込）
+      </span>
+    </div>
+    <%# <% if user_signed_in? && @item.purchase == nil %> 
+      <%# <% if current_user.id == @item.user_id   %>
+        <%# <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %> 
+        <%# <p class='or-text'>or</p> %>
+        <%# <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %> 
+      <%# <% else %> 
+        <%# <%= link_to '購入画面に進む', item_purchases_path(@item.id), class:"item-red-btn"%> 
+      <%# <%end%> 
+    <%# <% end %>  
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">ホスト</th>
+          <td class="detail-value"><%= @house.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">物件概要</th>
+          <td class="detail-value"><%= @house.description %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">ロケーション</th>
+          <td class="detail-value"><%= @house.location %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">チェックイン</th>
+          <td class="detail-value"><%= @house.checkin %>以降</td>
+        </tr>
+        <tr>
+          <th class="detail-item">チェックアウト</th>
+          <td class="detail-value"><%= @house.checkout %>まで</td>
+        </tr>
+        <tr>
+          <th class="detail-item">建物カテゴリー</th>
+          <td class="detail-value"><%= @house.house_category.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">ルームタイプ</th>
+          <td class="detail-value"><%= @house.room_type.name %></td>
+        </tr>
+      </tbody>
+  </div>
+</div>
