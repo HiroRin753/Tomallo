@@ -9,8 +9,8 @@ class PagesController < ApplicationController
   end
 
   def prefecture
-       @prefecture = House.find_by(prefecture_id: params[:id])
-       @prefectures = House.where(prefecture_id: params[:id]).order('created_at DESC')
+    @prefecture = House.find_by(prefecture_id: params[:id])
+    @prefectures = House.where(prefecture_id: params[:id]).order('created_at DESC')
   end
 
 end

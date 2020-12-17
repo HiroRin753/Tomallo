@@ -2,8 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   
-  has_many :hauses
-  has_many :reserves
+  has_many :houses
+  has_many :reservations
   has_many :payments
   has_many :comments
   has_many :sns_credentials

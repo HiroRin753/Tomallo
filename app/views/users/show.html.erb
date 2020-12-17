@@ -1,6 +1,6 @@
 <div class= 'user-top'>
   <p><%= link_to 'Tomallo', "/", class: "title" %></p>
-  <p class= "user-name">
+  <p class= "user-nickname">
    <%= "#{current_user.nickname}さん"%>
   </p>
 </div>
@@ -8,4 +8,6 @@
 <div class= 'regi'>
   <%= link_to'お部屋を掲載する', new_house_path, class: "regibtn"%>
 </div>
-    
+
+
+ <%= render "houses/mypage_house", collection: current_user.houses %>

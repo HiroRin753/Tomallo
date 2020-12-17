@@ -35,7 +35,20 @@
         </tr>
         <tr>
           <th class="detail-item">ロケーション</th>
-          <td class="detail-value"><%= @house.location %></td>
+          <td class="detail-value">
+          <%= @house.location %>
+          <div id="map" style="width: 500px;height: 350px;"></div> 
+          <script>
+              var map;
+              function initMap() {
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 8
+               });
+              }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUaL_dZGTGBJtjdr8Cv_xisWho9OPNjbg&callback=initMap"async defer></script>
+          </td>
         </tr>
         <tr>
           <th class="detail-item">チェックイン</th>
@@ -56,3 +69,7 @@
       </tbody>
   </div>
 </div>
+
+   
+
+
