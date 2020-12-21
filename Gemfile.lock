@@ -104,6 +104,7 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     ffi (1.13.1)
+    geocoder (1.6.4)
     gimei (0.5.1)
       romaji
     globalid (0.4.2)
@@ -350,6 +351,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
+  geocoder
   gimei
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
