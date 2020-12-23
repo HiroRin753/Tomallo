@@ -1,0 +1,157 @@
+<%= render "shared/header" %>
+
+<div class = house-rent-contents>
+ <div class="items-sell-main">
+    <h2 class="items-sell-title">お部屋の情報を入力</h2>
+    <%= form_with model: @house, local: true do |f| %>
+     <%= render 'shared/error_messages', model: f.object %>
+
+  
+     <div class="img-upload">
+      <div class="weight-bold-text">
+        物件画像
+       <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <%= f.file_field :images, multiple: true, name: 'house[images][]', id:"house-image" %>
+      </div>
+      <div class = 'image-list'>
+       <div id="image-list" class = 'image-preview'></div>
+      </div>
+    </div>
+   
+    <%# /出品画像 %>
+
+    <%# 商品名と商品説明 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        タイトル
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          概要
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :description, class:"items-text", id:"item-info", placeholder:"物件の説明（必須 1,000文字まで）（お部屋のタイプ、宿泊可能人数、キャッチコピー、注意点など）例）東京の中心にある新しいデザイナーズホテルへようこそ。・25㎡ ・ダブルサイズベッド２つ ・50インチ4Kテレビ" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div class = "location">
+        <div class = "weight-bold-text">
+          アクセス
+         <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :location, class:"items-text", id:"item-location", placeholder:"アクセス（必須 1,000文字まで）（最寄り駅、観光地、近隣のスーパー・コンビニなど）例）東京で有名な築地をお楽しみください。築地駅徒歩2分、築地本願寺まで徒歩4分、ローソンまで徒歩２分" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+    </div>
+    <div class = "checkinout">
+      <div class = "check-in">
+       <div class="weight-bold-text">
+          チェックイン
+          <span class="indispensable">必須</span>
+       </div>
+       <%= f.text_area :checkin, class:"check-text", placeholder:"16:00"%>以降
+       </div>
+      <div class = "check-out">
+       <div class="weight-bold-text">
+          チェックアウト
+          <span class="indispensable">必須</span>
+       </div>
+       <%= f.text_area :checkout, class:"check-text", placeholder:"11:00"%>迄
+      </div>
+    </div>
+    <%# /商品名と商品説明 %>
+
+    <%# 商品の詳細 %>
+    
+    <div class="items-detail">
+      <div class="weight-bold-text">物件の詳細</div>
+      <div class="form">
+       <div class='shipping-address-form'>
+
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="weight-bold-text">郵便番号</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :postal_code, class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="weight-bold-text">都道府県</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="weight-bold-text">市区町村</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :city, class:"input-default", id:"city", placeholder:"例）横浜市緑区"%>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="weight-bold-text">番地</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :house_number, class:"input-default", id:"addresses", placeholder:"例）青山1-1-1"%>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="weight-bold-text">建物名</label>
+          <span class="form-any">任意</span>
+        </div>
+        <%= f.text_field :building_name, class:"input-default", id:"building", placeholder:"例）柳ビル103"%>
+      </div>
+    </div>
+        <div class="weight-bold-text">
+          カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:house_category_id, HouseCategory.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          建物タイプ
+          <span class="indispensable">必須</span>
+        </div>
+         <%= f.collection_select(:room_type_id, RoomType.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+      </div>
+    </div>
+    <%# /商品の詳細 %>
+
+    <%# 販売価格 %>
+    <div class="sell-price">
+      <div class="weight-bold-text question-text">
+        <span>宿泊料金<br></span>
+      </div>
+      <div>
+        <div class="price-content">
+          <div class="price-text">
+            <span>料金</span>
+            <span class="indispensable">必須</span>
+          </div>
+          <span class="sell-yen">一泊</span>
+           <%= f.text_field :price, class:"price-input", id:"house-price", placeholder:"例）300" %>
+          <span class="sell-yen">円</span>
+        </div>
+        <div class="price-content">
+          <span>掲載手数料 (10%)</span>
+          <span>
+            <span id='add-tax-price'></span>円
+          </span>
+        </div>
+        <div class="price-content">
+          <span>利益</span>
+          <span>
+            <span id='profit'></span>円
+        </div>
+        </span>
+      </div>
+    </div>
+    <div class="sell-btn-contents">
+      <%= f.submit "変更する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', user_path(current_user), class:"back-btn" %>
+    </div>
+  </div>
+  <% end %>
+</div>
