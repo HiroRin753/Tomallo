@@ -20,7 +20,7 @@ class HousesController < ApplicationController
 
   def edit
     unless current_user == @house.user
-      redirect_to_root_path
+      redirect_to root_path
     end
   end
 

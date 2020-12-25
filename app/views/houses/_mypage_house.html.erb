@@ -17,8 +17,8 @@
                   <%# <%= image_tag "star.png", class:"star-icon" %> 
                   <%# <span class='star-count'>0</span> %>
                 <%# </div> %>
-                <%= link_to '商品の編集', edit_house_path, method: :get, class: "item-red-btn" %>
-                <%= link_to '削除', house_path(house.id), method: :delete, class:'item-destroy' %>
+                <%= link_to '商品の編集', edit_house_path(house.id), method: :get, class: "edit-btn" %>
+                <%= link_to '削除', house_path(house.id), method: :delete, class:'destroy-btn' %>
             </div>
             <% end %>
           </li>

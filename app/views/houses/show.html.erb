@@ -1,40 +1,39 @@
 <%= render "shared/header" %>
 
 <%# 宿の概要 %>
-<div class="item-show">
-  <div class="item-box">
-    <div class='item-img-content'>
-      <%= image_tag @house.images[0], class:"item-box-img" %>
+<div class="house-show">
+  <div class="house-box">
+    <div class='house-img-content'>
+      <%= image_tag @house.images[0], class:"house-box-img" %>
     </div>
      <h2 class="name">
       <%= @house.title%>
     </h2>
-    <div class="item-price-box">
-      <span class="item-price">
+    <div class="house-price-box">
+      <span class="house-price">
         <%= @house.price %> 円/泊（税込）
       </span>
     </div>
     <% if user_signed_in?  %>
       <%if current_user.id == @house.user_id   %>
-        <%= link_to '商品の編集', edit_house_path, method: :get, class: "item-red-btn" %>
-        <p class='or-text'>or</p>
-        <%= link_to '削除', house_path(@house.id), method: :delete, class:'item-destroy' %>
+        <%= link_to '商品の編集', edit_house_path, method: :get, class: "house-red-btn" %>
+        <%= link_to '削除', house_path(@house.id), method: :delete, class:'house-destroy' %>
       <% else %>
-        <%= link_to '購入画面に進む', "#", class:"item-red-btn" %>
+        <%= link_to '購入画面に進む', "#", class:"house-red-btn" %>
       <%end %>
     <%end%>
     <table class="detail-table">
       <tbody>
         <tr>
-          <th class="detail-item">ホスト</th>
+          <th class="detail">ホスト</th>
           <td class="detail-value"><%= @house.user.nickname %></td>
         </tr>
         <tr>
-          <th class="detail-item">物件概要</th>
+          <th class="detail">物件概要</th>
           <td class="detail-value"><%= @house.description %></td>
         </tr>
         <tr>
-          <th class="detail-item">ロケーション</th>
+          <th class="detail">ロケーション</th>
           <td class="detail-value">
           <%= @house.location %>
           <div id="map" style="width: 500px;height: 350px;"></div> 
@@ -51,19 +50,19 @@
           </td>
         </tr>
         <tr>
-          <th class="detail-item">チェックイン</th>
+          <th class="detail">チェックイン</th>
           <td class="detail-value"><%= @house.checkin %>以降</td>
         </tr>
         <tr>
-          <th class="detail-item">チェックアウト</th>
+          <th class="detail">チェックアウト</th>
           <td class="detail-value"><%= @house.checkout %>まで</td>
         </tr>
         <tr>
-          <th class="detail-item">建物カテゴリー</th>
+          <th class="detail">建物カテゴリー</th>
           <td class="detail-value"><%= @house.house_category.name %></td>
         </tr>
         <tr>
-          <th class="detail-item">ルームタイプ</th>
+          <th class="detail">ルームタイプ</th>
           <td class="detail-value"><%= @house.room_type.name %></td>
         </tr>
       </tbody>

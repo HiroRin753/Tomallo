@@ -220,11 +220,36 @@
 
 .house-title {
   font-size: 2.5vh;
+  color: black;
+}
+
+.detail-title{
+  text-decoration: none;
+}
+
+.house-address{
+  color: black;
 }
 
 .house-price {
   font-size: 1.5vh;
   display: flex;
   justify-content: space-between;
+  color: black;
 }
+
+.edit-btn{
+  text-decoration: none;
+  background-color:#ea352d;
+  color: #FFF;
+  padding: 2px;
+}
+
+.destroy-btn{
+  text-decoration: none;
+  background-color:lightgray;
+  color: black;
+  padding: 2px;
+}
+
 // 宿一覧
