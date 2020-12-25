@@ -3,10 +3,13 @@ class House < ApplicationRecord
   belongs_to_active_hash :house_category
   belongs_to_active_hash :room_type
   belongs_to_active_hash :prefecture
-
   has_many_attached :images
   belongs_to :user
   has_many :comments
+
+  geocoded_by :city
+  after_validation :geocode
+
   
   with_options presence: true do
     validates :user_id

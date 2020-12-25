@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
-  before_action :set_house, only: [:show, :edit, :update, :destroy]
+  before_action :set_house, only: [:show, :edit, :update, :destroy, :map]
 
   def new 
     @house = House.new
@@ -37,8 +37,11 @@ class HousesController < ApplicationController
       redirect_to house_path
     end
     if @house.destroy 
-      redirect_to root_path
+      redirect_to user_path
     end
+  end
+
+  def map 
   end
 
  private
