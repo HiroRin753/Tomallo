@@ -7,7 +7,10 @@ class House < ApplicationRecord
   belongs_to :user
   has_many :comments
 
-  geocoded_by :city
+  def address
+    "%s %s"%([self.city, self.house_number])
+  end
+  geocoded_by :address
   after_validation :geocode
 
   
