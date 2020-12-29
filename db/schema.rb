@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_080822) do
+ActiveRecord::Schema.define(version: 2020_12_28_053219) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,16 +33,6 @@ ActiveRecord::Schema.define(version: 2020_12_25_080822) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.datetime "start"
-    t.datetime "end"
-    t.string "color"
-    t.boolean "allday"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "houses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
@@ -63,6 +53,19 @@ ActiveRecord::Schema.define(version: 2020_12_25_080822) do
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_houses_on_user_id"
+  end
+
+  create_table "reservations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "house_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "price"
+    t.integer "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_reservations_on_house_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -94,5 +97,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_080822) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "houses", "users"
+  add_foreign_key "reservations", "houses"
+  add_foreign_key "reservations", "users"
   add_foreign_key "sns_credentials", "users"
 end

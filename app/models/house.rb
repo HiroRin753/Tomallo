@@ -6,6 +6,7 @@ class House < ApplicationRecord
   has_many_attached :images
   belongs_to :user
   has_many :comments
+  has_many :reservations
 
   def address
     "%s %s"%([self.city, self.house_number])

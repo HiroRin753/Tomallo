@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   }
   root to: 'pages#index'
   resources :pages, only: [:index, :search, :prefecture]
-  resources :houses
+  resources :houses do
+    resources :reservations, only: [:create]
+  end
   resources :users, only:[:show]
 
   get '/houses/prefecture/:id', to: "pages#prefecture"

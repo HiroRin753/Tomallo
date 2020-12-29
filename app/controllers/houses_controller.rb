@@ -37,7 +37,7 @@ class HousesController < ApplicationController
       redirect_to house_path
     end
     if @house.destroy 
-      redirect_to user_path
+      redirect_to root_path
     end
   end
 
