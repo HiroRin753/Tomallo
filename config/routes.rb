@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   resources :pages, only: [:index, :search, :prefecture]
   resources :houses do
-    resources :reservations, only: [:create]
+    resources :reservations, only: [:index, :create]
   end
   resources :users, only:[:show]
 

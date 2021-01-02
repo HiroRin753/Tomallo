@@ -1,6 +1,9 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+  end
+
   def create
       house = House.find(params[:house_id])
 
