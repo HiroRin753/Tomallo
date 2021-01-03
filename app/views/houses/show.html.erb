@@ -16,10 +16,10 @@
     </div>
     <% if user_signed_in?  %>
       <%if current_user.id == @house.user_id   %>
-        <%= link_to '商品の編集', edit_house_path, method: :get, class: "house-red-btn" %>
+        <%= link_to '物件の編集', edit_house_path, method: :get, class: "house-red-btn" %>
         <%= link_to '削除', house_path(@house.id), method: :delete, class:'house-destroy' %>
       <% else %>
-        <%= link_to '購入画面に進む', "#", class:"house-red-btn" %>
+        <%= link_to '予約可能状況を確認する', house_reservations_path(@house.id) , class:"house-red-btn" %>
       <%end %>
     <%end%>
     <table class="detail-table">
