@@ -3,7 +3,7 @@
 自身の不動産を宿として誰でも貸し出せる・好みの宿を探して泊まれるプラットフォームサイトです。
 <br>
 <br>
-<img width = '1440' alt = 'スクリーンショット'>
+<img width="1437" alt="スクリーンショット 2021-01-04 12 35 55" src="https://user-images.githubusercontent.com/71772150/103499505-a7594c00-4e8b-11eb-9205-57cb59de7aa5.png">>
 
 
 
