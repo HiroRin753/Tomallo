@@ -8,6 +8,17 @@ class User < ApplicationRecord
   has_many :comments
   has_many :sns_credentials
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64'11'
+      user.nickname = 'ゲスト'
+      user.last_name = '田中'
+      user.last_name_kana ='タナカ'
+      user.first_name = '太郎'
+      user.first_name_kana = 'タロウ'
+      user.birthday = '20200101'
+    end
+  end
 
   def self.from_omniauth(auth)
    sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create

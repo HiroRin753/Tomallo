@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-  resources :reservationcs
-  get 'events/index'
-  get 'events/show'
-  get 'events/new'
-  get 'events/edit'
   
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
+  devise_scope :user do
+    post '/users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
+
   root to: 'pages#index'
   resources :pages, only: [:index, :search, :prefecture]
   resources :houses do
