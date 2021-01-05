@@ -36,12 +36,12 @@ class HousesController < ApplicationController
     unless current_user == @house.user
       redirect_to house_path
     end
-    if @house.destroy 
+    if @house.destroy
       redirect_to root_path
     end
   end
 
-  def map 
+  def map
   end
 
  private

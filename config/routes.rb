@@ -20,4 +20,4 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create' #ログイン認証
   get '/logout', to: 'sessions#destroy' #ログアウト用
   get "/auth/failure", to: "sessions#failure" #認証失敗時用
-end
+end 
