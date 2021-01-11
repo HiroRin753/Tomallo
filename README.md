@@ -75,31 +75,25 @@
 ## reservations テーブル
 | Column       | Type       | Options                        |
 | -------      | ---------- | ------------------------------ |
-| restaurant   | references | null: false, foreign_key: true |
+| house        | references | null: false, foreign_key: true |
 | user         | references | null: false, foreign_key: true |
-| email        | string     | null:false|
-| first_name   | string     | null: false |
-| last_name    | string     | null: false |
-| first_name_kana | string      | null: false |
-| last_name_kana  | string      | null: false |
-| phone_number | string | null:false|
+| start_date   | integer     | null: false |
+| end_date     | integer     | null: false |
+| price        | string      | null: false |
+| total        | string      | null: false |
 
 ### Association
 - belongs_to :user
-- belongs_to :restaurants
+- belongs_to :house
 - has_one :payment
-- belongs_to :course
 
 ## paymentsテーブル
 | Column         | Type       | Options     |
 |--------------- | ---------  | ----------  |
 | user           | references | null: false, foreign_key: true |
-| restaurant     | references | null: false, foreign_key: true |
-| reserve        | references | null: false, foreign_key: true |
-| menu           | references | null: false, foreign_key: true |
+| house          | references | null: false, foreign_key: true |
 
 #### Association
-- belongs_to :restaurant
-- belongs_to :reserve
+- belongs_to :house
+- belongs_to :reservation
 - belongs_to :user
-- belongs_to :menu
