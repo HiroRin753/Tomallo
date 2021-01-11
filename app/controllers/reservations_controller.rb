@@ -6,21 +6,30 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @reservarion = Reservation.new
+    @reservation = Reservation.new
     @house = House.find(params[:house_id])
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
-    respond_to do |format|
-        if preservation.save
-            format.html{ redirect_to @reservation, notice: '予約が完了しました。'}
-            format.json { render :show, status: :created, location: @reservation}
+    
+    house = House.find(params[:house_id])
+
+        if current_user == house.user
+            flash[:alert] = "ご自身のお部屋は予約できません。"
         else
-          format.html { render :new }
-          format.json { render json: @reservation.errors, status: :unprocessable_entity }
+            start_date = Date.parse(reservations_params[:start_date])
+            end_date = Date.parse(reservations_params[:end_date])
+            days = (end_date - start_date).to_i + 1
+
+            @reservation = current_user.reservations.build(reservations_params)
+            @reservation.house = house
+            @reservation.price = house.price
+            @reservation.total = house.price * days
+            @reservation.save
+
+            flash[:notice] = "予約が完了しました!"
         end
-      end
+        redirect_to room
   end
 
 
@@ -42,18 +51,20 @@ class ReservationsController < ApplicationController
     render json: output
   end
 
-  def your_trips
-      @trips = current_user.reservations.order(start_date: :asc)
-  end
-
-  def your_reservations
-      @houses = current_user.houses
-  end
-
   private
-      def reservations_params
-          params.require(:reservation).permit(:start_date, :end_date, :price, :total).merge(use_id: current_user.id, house_id: @house.id)
-      end
+
+    def your_trips
+       @trips = current_user.reservations.order(start_date: :asc)
+    end
+
+    def your_reservations
+       @houses = current_user.houses
+    end
+
+  
+    def reservations_params
+        params.require(:reservation).permit(:start_date, :end_date)
+    end
 
       def is_conflict(start_date, end_date, house)
         check = house.reservations.where("? < start_date AND end_date < ?", start_date, end_date)
