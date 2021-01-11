@@ -3,10 +3,14 @@
 自身の不動産を宿として誰でも貸し出せる・好みの宿を探して泊まれるプラットフォームサイトです。
 <br>
 <br>
-<img width="1437" alt="スクリーンショット 2021-01-04 12 35 55" src="https://user-images.githubusercontent.com/71772150/103499505-a7594c00-4e8b-11eb-9205-57cb59de7aa5.png">>
+<img width="1437" alt="スクリーンショット 2021-01-04 12 35 55" src="https://user-images.githubusercontent.com/71772150/103499505-a7594c00-4e8b-11eb-9205-57cb59de7aa5.png">
 
 
+下記ページで公開しております。
 
+<https://tomallo.herokuapp.com/>
+
+# アプリ概要
 
 
 
@@ -36,60 +40,39 @@
 | first_name | string    | null: false |
 | last_name  | string    | null: false |
 | first_name_kana | string    | null: false |
-| last_name_kana| string      | null: false |
+| last_name_kana | string     | null: false |
+| birthday   | date       | null: false|
 
 ### Association
 - has_many :restaurants
-- has_many :comments
-- has_many :reserves
+- has_many :reservations
 - has_many :payments
 
 ## houses テーブル
 | Column           | Type      | Options     |
 | ---------------  | --------- | ----------- |
-| name             | string    | null: false |
+| title            | string    | null: false |
 | description      | text      | null:false  | 
-| phone_number     | string   | null:false  |
-| address          | string    | null:false  |
-| access           | string    | null:false  |
-| genre_id         | integer   | null:false  |
-| opening_hours    | string   | null:false  |
-| how_to_pay       | string    | null:false  |
+| locatoin         | text      | null:false  |
+| checkout         | string    | null:false  |
+| checkin          | string    | null:false  |
+| house_category_id | integer   | null:false  |
+| room_type_id     | integer   | null:false  |
+| price            | integer    | null:false  |
+| postal_code      |  string    | default: "" | null: false |
+| prefecture_id    | integer    | null: false |
+| city,            |  sring     | default: "" |  null: false|
+| house_number     | string     | default: "" | null: false|
+| building_name    | string     | default: "" |
 | user             | references | null:false, foreign_key: true|
-| comments         | references | null:false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- has_many :comments
-- has_many :reserves 
+- has_many :reservations
 - has_many :payments
 
-## courseテーブル
-| Column           | Type      | Options     |
-| ---------------  | --------- | ----------- |
-| name             | string    | null: false |
-| description      | text      | null:false  | 
-| price            | integer   | null:false  |
-| time             | integer   | null:false  |
 
-#### Association
-- belongs_to :restaurant
-- has_many :reserves
-
-
-## comments テーブル
-| Column       | Type       | Options                        |
-| -------      | ---------- | ------------------------------ |
-| text         | text       | null:false                     |
-| user         | references | null: false, foreign_key: true |
-| restaurant   | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to :user
-- belongs_to :restaurant
-
-
-## reserves テーブル
+## reservations テーブル
 | Column       | Type       | Options                        |
 | -------      | ---------- | ------------------------------ |
 | restaurant   | references | null: false, foreign_key: true |
