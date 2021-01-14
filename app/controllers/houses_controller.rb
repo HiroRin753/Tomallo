@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
-  before_action :set_house, only: [:show, :edit, :update, :destroy, :map, :preload, :preview]
+  before_action :set_house, only: [:show, :edit, :update, :destroy, :map,]
 
   def new 
     @house = House.new
