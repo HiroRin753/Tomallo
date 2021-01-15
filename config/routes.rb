@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  root to: 'pages#index'
+  root 'pages#index'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
+  
   resources :pages, only: [:index, :search, :prefecture]
   resources :houses, except: [:index] do
     resources :reservations do
