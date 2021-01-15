@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
-  before_action :set_house, only: [:show, :edit, :update, :destroy, :map,]
+  before_action :set_house, only: [:show, :edit, :update, :destroy, :map]
 
   def new 
     @house = House.new
@@ -21,7 +21,7 @@ class HousesController < ApplicationController
   def edit
     unless current_user == @house.user
       redirect_to root_path
-    end
+    endk
   end
 
   def update
@@ -54,7 +54,5 @@ class HousesController < ApplicationController
   def set_house
     @house = House.find(params[:id])
   end
-
-
 
 end
