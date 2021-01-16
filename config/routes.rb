@@ -1,17 +1,7 @@
 Rails.application.routes.draw do
-  root 'pages#index'
-
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks'
-  }
-
-  devise_scope :user do
-    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
-  end
-
-  
+  root to: 'pages#index'
   resources :pages, only: [:index, :search, :prefecture]
-  resources :houses, except: [:index] do
+  resources :houses, only: [:new, :show, :crate, :edit, :update, :destroy, :map] do
     resources :reservations do
       member do
         get 'preload'
@@ -20,6 +10,14 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only:[:show]
+
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
 
   get '/houses/prefecture/:id', to: "pages#prefecture"
   get 'pages/search'

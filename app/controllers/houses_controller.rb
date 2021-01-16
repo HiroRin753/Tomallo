@@ -1,5 +1,5 @@
 class HousesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_house, only: [:show, :edit, :update, :destroy, :map]
 
   def new 
@@ -21,7 +21,7 @@ class HousesController < ApplicationController
   def edit
     unless current_user == @house.user
       redirect_to root_path
-    endk
+    end
   end
 
   def update
@@ -44,7 +44,6 @@ class HousesController < ApplicationController
   def map
   end
 
-
  private
   def houses_params
     params.require(:house).permit(:title, :description, :location, :checkin, :checkout, :house_category_id, :room_type_id, :price, :postal_code, :prefecture_id, :city, :house_number, :building_name, images: [])
@@ -55,4 +54,4 @@ class HousesController < ApplicationController
     @house = House.find(params[:id])
   end
 
-end
+end 
