@@ -13,4 +13,9 @@ class PagesController < ApplicationController
     @prefectures = House.where(prefecture_id: params[:id]).order('created_at DESC')
   end
 
+  def room_type
+    @type = House.find_by(room_type_id: params[:id])
+    @types = House.where(room_type_id: params[:id]).order('created_at DESC')
+  end
+
 end

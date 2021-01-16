@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#index'
-  resources :pages, only: [:index, :search, :prefecture]
+  resources :pages, only: [:index, :search, :prefecture, :room_type]
   resources :houses, only: [:new, :show, :crate, :edit, :update, :destroy, :map] do
     resources :reservations do
       member do
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
+  get '/houses/room_type/:id', to: 'pages#room_type'
   get '/houses/prefecture/:id', to: "pages#prefecture"
   get 'pages/search'
   get '/auth/:provider/callback', to: 'sessions#create' #ログイン認証
