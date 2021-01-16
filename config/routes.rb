@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   resources :users, only:[:show]
   resources :pages, only: [:index, :search, :prefecture, :room_type]
-  resources :houses, only: [:new, :show, :crate, :edit, :update, :destroy, :map] do
+  resources :houses, only: [:new, :show, :create, :edit, :update, :destroy, :map] do
     resources :reservations do
       member do
         get 'preload'
