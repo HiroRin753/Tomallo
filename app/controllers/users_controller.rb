@@ -4,4 +4,3 @@ class UsersController < ApplicationController
     @houses = House.where(user_id: @user.id)
   end
 end
-
