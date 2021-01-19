@@ -30,6 +30,7 @@
   width: 50%;
   background-color: white;
   padding-bottom: 70px;
+  margin-bottom: 10%;
 }
 
 .form-header {
@@ -153,6 +154,8 @@
 .register-btn {
   width: 50%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .register-red-btn {
@@ -163,6 +166,7 @@
   line-height: 48px;
   font-size: 14px;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
 .register-info {
