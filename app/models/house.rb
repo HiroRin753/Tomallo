@@ -12,7 +12,7 @@ class House < ApplicationRecord
     "%s %s"%([self.city, self.house_number])
   end
   geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  after_validation :geocode
 
   
   with_options presence: true do
