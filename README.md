@@ -79,6 +79,25 @@ Active Hashで作ったカテゴリー毎に紐づくコンテンツを一覧で
 
 ![都道府県検索](https://user-images.githubusercontent.com/71772150/105124153-dbd03780-5b1c-11eb-98e8-577a1549da71.gif)
 
+## 地図表示機能
+### 機能概要
+Google map APIを利用して、物件のロケーションを表示しました。
+### 工夫した点
+市区町村と番地を分て登録するスタイルのため、地図に表示する際にこの二つのカラムを合わせてgeocodeに読み込ませる必要がありました。
+
+``` house.rb
+
+  def address
+    "%s %s"%([self.city, self.house_number])
+  end
+  geocoded_by :address
+  after_validation :geocode
+```
+上記のように記述することでうまくいきました。
+
+
+<img width="1399" alt="スクリーンショット 2021-01-20 11 48 37" src="https://user-images.githubusercontent.com/71772150/105125274-55692500-5b1f-11eb-8bc5-471832a5b40b.png">
+
 
 
 
