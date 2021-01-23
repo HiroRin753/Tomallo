@@ -19,3 +19,21 @@ window.$ = window.jQuery = require('jquery');
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+//= require jquery
+//= require moment
+//= require fullcalendar
+
+
+$(function () {
+  function eventCalendar() {
+      return $('#calendar').fullCalendar({});
+  };
+  function clearCalendar() {
+      $('#calendar').html('');
+  };
+});
+
+$(document).on('turbolinks:load', function () {
+  eventCalendar();
+});
+$(document).on('turbolinks:before-cache', clearCalendar);
