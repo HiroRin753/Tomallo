@@ -80,3 +80,4 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'jquery-rails'
 gem 'fullcalendar-rails'
 gem 'geocoder'
+gem "aws-sdk-s3", require: false
